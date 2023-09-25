@@ -3,12 +3,14 @@
 import React, { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import {  app, auth, db,createUserWithEmailAndPassword,doc ,setDoc,uploadBytes,ref } from "../../../firebase/Config";
+import {  app, auth, db,createUserWithEmailAndPassword,doc ,setDoc,uploadBytes,ref, collection } from "../../../firebase/Config";
+import { addDoc } from "firebase/firestore";
 
 
 export default function Signup() {
     const auth = getAuth(app);
     console.log(auth);
+    const userRef = collection(db, "users");
 
     const router = useRouter();
     const [email, setEmail] = useState("");
@@ -21,6 +23,12 @@ export default function Signup() {
             const user = userCredential.user;
             alert('User created!!!')
             router.push("/")
+        }).then((userCredential) => {
+            addDoc(collection(userRef, "users", "user"), {
+                email: email,
+                password: passwordOne
+            }
+            );
         })
     }
 
