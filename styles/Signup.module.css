@@ -1,0 +1,45 @@
+.signupDiv {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signupDivBox {
+    padding: 4rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ABA9C3;
+    border: 2px solid #fafafa;
+}
+
+.inputDiv {
+    margin-bottom: 10px;
+}
+
+.input {
+    border-radius: 5px;
+}
+
+.signUpBtn {
+    border: none;
+    border-radius: 15px;
+    width: 100%;
+    background-color: #275DAD;
+}
+
+.loginBtn {
+    display: flex;
+}
+
+.alreadyHaveAccDiv {
+    display: flex;
+}
+
+.title {
+    font-size: 3rem;
+    margin: 0rem 0rem 2rem 0rem;
+}

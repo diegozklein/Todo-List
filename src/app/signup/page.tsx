@@ -5,6 +5,8 @@ import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import {  app, auth, db,createUserWithEmailAndPassword,doc ,setDoc,uploadBytes,ref, collection } from "../../../firebase/Config";
 import { addDoc } from "firebase/firestore";
+import styles from "../../../styles/Signup.module.css";
+import Head from "next/head";
 
 
 export default function Signup() {
@@ -14,19 +16,19 @@ export default function Signup() {
 
     const router = useRouter();
     const [email, setEmail] = useState("");
-    const [passwordOne, setPasswordOne] = useState("");
-    const [passwordTwo, setPasswordTwo] = useState("");
+    const [password, setPassword] = useState("");
+    // const [passwordTwo, setPasswordTwo] = useState("");
 
 
     function Submit(){
-        createUserWithEmailAndPassword(auth, email, passwordOne).then((userCredential) => {
+        createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             const user = userCredential.user;
             alert('User created!!!')
             router.push("/")
         }).then((userCredential) => {
-            addDoc(collection(userRef, "users", "user"), {
+            addDoc(collection(userRef, "users", email), {
                 email: email,
-                password: passwordOne
+                password: password
             }
             );
         })
@@ -34,9 +36,24 @@ export default function Signup() {
 
     return(
         <div>
-            <input placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
-            <input type='password' placeholder="Password" value={passwordOne} onChange={(e) => {setPasswordOne(e.target.value) }} />
-            <button onClick={Submit}>Submit</button>
+            <Head>
+                <title>Todo - SignUp</title>
+            </Head>
+            <div className={styles.signupDiv}>
+                <div className={styles.signupDivBox}>
+                    <h1 className={styles.title}>Sign Up</h1>
+                    <div className={styles.inputDiv}>
+                        <input className={styles.input} placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                    </div>
+                    <div className={styles.inputDiv}>
+                        <input className={styles.input} type='password' placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value) }} />
+                    </div>
+                    <button className={styles.signUpBtn} onClick={Submit}>Sign Up</button>
+                    <div className={styles.alreadyHaveAccDiv}>
+                        <button className={styles.loginBtn} onClick={() => router.push("/signin")}>Already have an account</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 
