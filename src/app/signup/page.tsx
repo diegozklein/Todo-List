@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import {  app, auth, db,createUserWithEmailAndPassword,doc ,setDoc,uploadBytes,ref, collection } from "../../../firebase/Config";
+import {  app, db, createUserWithEmailAndPassword, collection } from "../../../firebase/Config";
 import { addDoc } from "firebase/firestore";
 import styles from "../../../styles/Signup.module.css";
 import Head from "next/head";
