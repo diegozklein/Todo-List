@@ -10,7 +10,7 @@ export default function TodoList() {
     
     function onAddTaskBtn() {
         const taskRef = addDoc(collection(db, "tasks"), {
-            task: task
+            task_name: task
         })
     }
 

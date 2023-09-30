@@ -12,25 +12,25 @@ import Head from "next/head";
 export default function Signup() {
     const auth = getAuth(app);
     console.log(auth);
-    const userRef = collection(db, "users");
 
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [passwordTwo, setPasswordTwo] = useState("");
+    const [message, setMessage] = useState("");
+    const tasksCollection = collection(db, 'tasks');
 
-
-    function Submit(){
+    async function Submit(){
+        const novaTaskRef = await addDoc(tasksCollection, {})
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            const user = userCredential.user;
-            alert('User created!!!')
+            setMessage("User Created!");
+            console.log("User created!!!")
             router.push("/")
         }).then((userCredential) => {
-            addDoc(collection(userRef, "users", email), {
+            const userRef = addDoc(collection(db, "users"), {
                 email: email,
-                password: password
-            }
-            );
+                password: password,
+                taskRef: novaTaskRef
+            })
         })
     }
 
@@ -41,7 +41,7 @@ export default function Signup() {
             </Head>
             <div className={styles.signupDiv}>
                 <div className={styles.signupDivBox}>
-                    <h1 className={styles.title}>Sign Up</h1>
+                    <b><h1 className={styles.title}>Sign Up</h1></b>
                     <div className={styles.inputDiv}>
                         <input className={styles.input} placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
                     </div>
