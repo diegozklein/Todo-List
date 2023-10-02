@@ -5,8 +5,8 @@ import {  app, db, collection } from "../../../firebase/Config";
 import { addDoc, doc, setDoc, onSnapshot, setIndexConfiguration, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { userInfo } from "os";
 import { useRouter } from "next/navigation";
+import styles from "../../../styles/Todo.module.css"
 
 export default function TodoList() {
     const [tasks, setTasks] = useState<any[]>([]);
@@ -72,16 +72,18 @@ export default function TodoList() {
             <Head>
                 <title>Todo List</title>
             </Head>
-            <div>
-                <input value={input} onChange={(e) =>{setInput(e.target.value)}}/>
-                <button onClick={(onAddTaskBtn)}>Add Task</button>
-            </div>
-            <div>
-                <ul>
-                    {tasks.map((task, index) =>(
-                        <li key={index}>{task.task}</li>
-                    ))}
-                </ul>
+            <div className={styles.todoListDiv}>
+                <div className={styles.todoListDivBox}>
+                    <div>
+                        <input className={styles.inputDiv} placeholder='Task Description' value={input} onChange={(e) =>{setInput(e.target.value)}}/>
+                        <button className={styles.addTaskBtn} onClick={(onAddTaskBtn)}>Add Task</button>
+                    </div>
+                    <ul className={styles.todoList}>
+                        {tasks.map((task, index) =>(
+                            <li key={index}>{task.task}</li>
+                            ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );
