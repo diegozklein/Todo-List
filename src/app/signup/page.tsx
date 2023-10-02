@@ -4,33 +4,33 @@ import React, { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import {  app, db, createUserWithEmailAndPassword, collection } from "../../../firebase/Config";
-import { addDoc } from "firebase/firestore";
+import { addDoc, doc, setDoc } from "firebase/firestore";
 import styles from "../../../styles/Signup.module.css";
 import Head from "next/head";
 
 
 export default function Signup() {
     const auth = getAuth(app);
-    console.log(auth);
+    // console.log(auth);
 
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-    const tasksCollection = collection(db, 'tasks');
 
     async function Submit(){
-        const novaTaskRef = await addDoc(tasksCollection, {})
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             setMessage("User Created!");
-            console.log("User created!!!")
+            const userId = userCredential.user.uid 
+            const userCollection = collection(db, 'users')
             router.push("/")
-        }).then((userCredential) => {
-            const userRef = addDoc(collection(db, "users"), {
+            const test = doc(userCollection, userId)
+            setDoc(test, {
                 email: email,
-                password: password,
-                taskRef: novaTaskRef
+                uid: userId
             })
+            // return test
+            router.push("/")
         })
     }
 
