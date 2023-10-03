@@ -70,7 +70,7 @@ export default function TodoList() {
               task: input
           })
 
-      setTasks([...tasks, { id: '', task: input }]);
+      // setTasks([...tasks, { id: '', task: input }]);
       setInput('')
       } catch (error) {
           console.error("Error adding task:", error);
