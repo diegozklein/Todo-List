@@ -1,79 +1,78 @@
-.todoListDiv { 
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.todoListDiv {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
 
-.todoListDivBox {
-    padding: 2rem;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ABA9C3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
 .inputDiv {
-    margin-bottom: 10px;
-    padding: 3px;
-    border-radius: 4px;
+  position: absolute;
+  top: 10px;
+}
+
+.inputField {
+  top: 10px;
+  margin-bottom: 10px;
+  padding: 3px;
+  border-radius: 4px;
 }
 
 .addTaskBtn {
-    border: none;
-    border-radius: 4px;
-    background-color: #FF6969;
-    color: #fff;
-    cursor: pointer;
-    padding: 8px 16px;
-    margin-left: 10px;
-  }
+  border: none;
+  border-radius: 4px;
+  background-color: #66FF99;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin-left: 10px;
+}
 
-  .signOutBtn {
-    border: none;
-    border-radius: 4px;
-    background-color: #FF6969;
-    color: #fff;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    padding: 8px 16px;
-    cursor: pointer;
-  }
-
-.testDiv {
-    display: flex;
-    width: 100%;
-    /* justify-content: space-between; */
-    align-items: center;
+.signOutBtn {
+  border: none;
+  border-radius: 4px;
+  background-color: #FF6969;
+  color: #fff;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
 .taskItem {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .taskContent {
-    flex-grow: 1;
-    font-size: 16px;
-  }
-  
-  .removeTaskBtn {
-    padding: 5px 10px;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: rgb(2,0,36);
+  background: linear-gradient(260deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.taskContent {
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+.checkTask {
+
+}
+
+.removeTaskBtn {
+  padding: 5px 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.todoList {
+  position: absolute;
+  top: 4rem;
+}

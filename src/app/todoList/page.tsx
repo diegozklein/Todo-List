@@ -104,17 +104,21 @@ export default function TodoList() {
       <Head>
         <title>Todo List</title>
       </Head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet"></link>
       <div className={styles.todoListDiv}>
-        <div className={styles.todoListDivBox}>
-          <button className={styles.signOutBtn} onClick={onLogout}>Sign Out</button>
-          <div>
-            <input maxLength={20} className={styles.inputDiv} placeholder='Task Description' value={input} onChange={(e) => { setInput(e.target.value) }} />
-            <button className={styles.addTaskBtn} onClick={(onAddTaskBtn)}>Add Task</button>
+        <button className={styles.signOutBtn} onClick={onLogout}>Sign Out</button>
+        <div className={styles.inputDiv}>
+          <input maxLength={20} className={styles.inputField} placeholder='Task Description' value={input} onChange={(e) => { setInput(e.target.value) }} />
+          <button className={styles.addTaskBtn} onClick={(onAddTaskBtn)}>Add Task</button>
 
-          </div>
-          <ul className={styles.todoList}>
+        </div>
+        <div className={styles.todoList}>
+          <ul>
             {tasks.map((task) => (
               <li className={styles.taskItem} key={task.id}>
+                <input type="checkbox" />
                 <div className={styles.taskContent}>
                   {task.task}
                 </div>
@@ -124,8 +128,6 @@ export default function TodoList() {
               </li>
             ))}
           </ul>
-
-
         </div>
       </div>
     </div>
